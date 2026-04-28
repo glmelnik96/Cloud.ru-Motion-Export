@@ -1,7 +1,3 @@
-# Local overrides and secrets — never commit real keys
-config/runtime-config.js
-config/secrets.local.js
-
 # Environment files (optional local tooling)
 .env
 .env.local
@@ -28,3 +24,4 @@ node_modules/
 
 # Local project memory/artifacts
 .omc/
+.claude/

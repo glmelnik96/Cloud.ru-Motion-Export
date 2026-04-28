@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ExtensionManifest Version="7.0" ExtensionBundleId="com.example.extensionsllmchat.bundle" ExtensionBundleVersion="1.0.0" ExtensionBundleName="Extensions LLM Chat" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ExtensionManifest Version="7.0" ExtensionBundleId="com.cloudru.motionexport.bundle" ExtensionBundleVersion="1.0.0" ExtensionBundleName="Cloud.ru Motion Export" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ExtensionList>
-    <Extension Id="com.example.extensionsllmchat.panel" Version="1.0.0" />
+    <Extension Id="com.cloudru.motionexport.panel" Version="1.0.0" />
   </ExtensionList>
   <ExecutionEnvironment>
     <HostList>
@@ -15,7 +15,7 @@
     </RequiredRuntimeList>
   </ExecutionEnvironment>
   <DispatchInfoList>
-    <Extension Id="com.example.extensionsllmchat.panel">
+    <Extension Id="com.cloudru.motionexport.panel">
       <DispatchInfo>
         <Resources>
           <MainPath>./index.html</MainPath>
@@ -30,7 +30,7 @@
         </Lifecycle>
         <UI>
           <Type>Panel</Type>
-          <Menu>Extensions LLM Chat</Menu>
+          <Menu>Cloud.ru Motion Export</Menu>
           <Geometry>
             <Size>
               <Height>600</Height>

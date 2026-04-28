@@ -3,520 +3,56 @@ body {
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 11px;
-  color: #f0f0f0;
-  background-color: #2a2a2a;
+  background-color: #2b2b2b;
+  color: #e0e0e0;
 }
 
 .panel-root {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  box-sizing: border-box;
-  background-color: #323232;
-}
-
-/* ── Tab bar ─────────────────────────────────────────────────────────── */
-
-.tab-bar {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  border-bottom: 1px solid #444;
-  background-color: #2b2b2b;
-  padding: 0 4px;
-  flex-shrink: 0;
-}
-
-.tab-btn {
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid transparent;
-  color: #999;
-  font-size: 11px;
-  padding: 6px 12px;
-  cursor: pointer;
-  transition: color 0.15s, border-color 0.15s;
-}
-
-.tab-btn:hover {
-  color: #ddd;
-}
-
-.tab-btn.active {
-  color: #f0f0f0;
-  border-bottom-color: #5679aa;
-}
-
-.tab-bar-right {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 0;
-}
-
-/* ── Tab panels ──────────────────────────────────────────────────────── */
-
-.tab-panel {
-  display: none;
-  flex: 1;
-  flex-direction: column;
-  padding: 6px;
-  box-sizing: border-box;
-  gap: 6px;
-  min-height: 0;
   overflow: hidden;
-}
-
-.tab-panel.active {
-  display: flex;
-}
-
-/* ── Chat area (inside Chat tab) ─────────────────────────────────────── */
-
-.chat-transcript {
-  flex: 1;
-  border: 1px solid #444;
-  background-color: #1e1e1e;
-  padding: 8px;
-  overflow-y: auto;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 11px;
-  line-height: 1.5;
-}
-
-.active-comp-note {
-  font-size: 10px;
-  color: #b8c6d8;
-  border: 1px solid #3f4650;
-  background-color: #252c35;
-  padding: 4px 6px;
-  border-radius: 3px;
-}
-
-/* ── Messages ─────────────────────────────────────────────────────────── */
-
-.chat-message {
-  margin-bottom: 8px;
-  padding: 6px 8px;
-  border-radius: 4px;
-}
-
-.chat-message.user {
-  background-color: #2a3a50;
-  color: #c7e3ff;
-  border-left: 3px solid #5679aa;
-}
-
-.chat-message.assistant {
-  background-color: #2a2a2a;
-  color: #e0e0e0;
-  border-left: 3px solid #6a8a5a;
-}
-
-.chat-message.system {
-  background-color: #3a2a2a;
-  color: #e0b0b0;
-  border-left: 3px solid #8a5a5a;
-  font-size: 10px;
-}
-
-.chat-message .msg-role {
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #888;
-  margin-bottom: 2px;
-}
-
-.chat-message .msg-text {
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-/* Allow HTML rendered markdown in assistant messages */
-.chat-message.assistant .msg-text {
-  white-space: normal;
-}
-
-.chat-message.assistant .msg-text p {
-  margin: 0 0 4px 0;
-}
-
-.chat-message.assistant .msg-text ul {
-  margin: 2px 0;
-  padding-left: 16px;
-}
-
-.chat-message.assistant .msg-text li {
-  margin-bottom: 1px;
-}
-
-.md-code-block {
-  display: block;
-  background-color: #1a1f28;
-  border: 1px solid #444;
-  padding: 4px 6px;
-  margin: 4px 0;
-  font-family: Menlo, Monaco, Consolas, monospace;
-  font-size: 10px;
-  white-space: pre-wrap;
-  word-break: break-all;
-  color: #e4f1ff;
-  border-radius: 2px;
-}
-
-.md-inline-code {
-  background-color: #1a1f28;
-  padding: 1px 3px;
-  border-radius: 2px;
-  font-family: Menlo, Monaco, Consolas, monospace;
-  font-size: 10px;
-  color: #9ad0ff;
-}
-
-.md-h1 { font-size: 13px; display: block; margin: 6px 0 3px; }
-.md-h2 { font-size: 12px; display: block; margin: 4px 0 2px; }
-.md-h3 { font-size: 11px; display: block; margin: 3px 0 2px; }
-
-/* ── Tool call cards ──────────────────────────────────────────────────── */
-
-.tool-calls-container {
-  margin-top: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.tool-call-card {
-  border: 1px solid #444;
-  border-radius: 3px;
-  background-color: #252525;
-  overflow: hidden;
-}
-
-.tool-call-header {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 8px;
-  cursor: pointer;
-  font-size: 10px;
-  user-select: none;
-}
-
-.tool-call-header:hover {
-  background-color: #2e2e2e;
-}
-
-.tool-icon {
-  font-size: 10px;
-  color: #888;
-}
-
-.tool-name {
-  font-family: Menlo, Monaco, Consolas, monospace;
-  font-size: 10px;
-  color: #9ad0ff;
-  flex: 1;
-}
-
-.tool-status {
-  font-size: 9px;
-  padding: 1px 5px;
-  border-radius: 2px;
-}
-
-.tool-status.ok {
-  background-color: #274d2f;
-  color: #a5f7b3;
-}
-
-.tool-status.error {
-  background-color: #5a2020;
-  color: #ffb3b3;
-}
-
-.tool-status.running {
-  background-color: #4a4a20;
-  color: #f0f0a0;
-}
-
-.tool-chevron {
-  font-size: 10px;
-  color: #666;
-  transition: transform 0.15s;
-}
-
-.tool-call-card.expanded .tool-chevron {
-  transform: rotate(180deg);
-}
-
-.tool-call-details {
-  display: none;
-  padding: 4px 8px 6px;
-  border-top: 1px solid #3a3a3a;
-  font-family: Menlo, Monaco, Consolas, monospace;
-  font-size: 10px;
-  max-height: 200px;
-  overflow: auto;
-}
-
-.tool-call-card.expanded .tool-call-details {
-  display: block;
-}
-
-.tool-detail-label {
-  color: #666;
-  font-size: 9px;
-  margin-top: 2px;
-}
-
-.tool-detail-content {
-  color: #ccc;
-  white-space: pre-wrap;
-  word-break: break-all;
-  margin-bottom: 4px;
-}
-
-/* ── Expression blocks (for backward compat with expression pipeline) ── */
-
-.chat-message.assistant .chat-expression {
-  display: block;
-  background-color: #1a1f28;
-  border: 1px solid #586a8a;
-  padding: 4px;
-  margin-bottom: 4px;
-  color: #e4f1ff;
-  white-space: pre-wrap;
-  font-family: Menlo, Monaco, Consolas, monospace;
-  font-size: 10px;
-}
-
-.chat-expression-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2px;
-  font-size: 10px;
-  color: #a8c4ff;
-}
-
-.chat-expression-copy-btn {
-  border: 1px solid #586a8a;
-  background-color: #2b3242;
-  color: #e4f1ff;
-  padding: 1px 4px;
-  font-size: 10px;
-  cursor: pointer;
-}
-
-.chat-expression-copy-btn:hover {
-  background-color: #354159;
-}
-
-/* ── Status & provider bar ────────────────────────────────────────────── */
-
-.status-line {
-  font-size: 10px;
-  color: #bbbbbb;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.model-status {
-  padding: 1px 4px;
-  border-radius: 2px;
-  font-size: 9px;
-}
-
-.model-status-ok {
-  background-color: #274d2f;
-  color: #a5f7b3;
-}
-
-.model-status-error {
-  background-color: #5a2020;
-  color: #ffb3b3;
-}
-
-.model-status-unknown {
-  background-color: #444444;
-  color: #dddddd;
-}
-
-.model-selector {
-  font-size: 10px;
-  min-width: 0;
-  max-width: 160px;
-}
-
-/* ── Preset bar ──────────────────────────────────────────────────────── */
-
-.presets-section {
-  flex-shrink: 0;
 }
 
 .section-label {
   font-size: 10px;
-  color: #aaa;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #b8b8b8;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
-  padding: 0 2px;
+  margin: 0 0 6px 0;
 }
 
-.preset-bar {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.preset-dropdown {
-  position: relative;
-}
-
-.preset-dropdown-btn {
-  min-width: 120px;
-  text-align: left;
-  position: relative;
-  padding-right: 18px;
-}
-
-.preset-dropdown-btn::after {
-  content: "\25BE";
-  position: absolute;
-  right: 6px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #cfd7e2;
-  font-size: 10px;
-}
-
-.preset-dropdown-menu {
-  position: absolute;
-  top: calc(100% + 2px);
-  left: 0;
-  min-width: 140px;
-  border: 1px solid #4b5670;
-  background-color: #1f2530;
-  z-index: 1000;
-  border-radius: 3px;
-  padding: 2px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.preset-option-btn {
-  border: 1px solid transparent;
-  background-color: transparent;
-  color: #e0e6ef;
-  font-size: 10px;
-  text-align: left;
-  padding: 4px 6px;
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.preset-option-btn:hover {
-  background-color: #314259;
-}
-
-.preset-option-btn.active {
-  background-color: #3c5a80;
-  border-color: #5679aa;
-}
-
-.preset-field {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.preset-field-label {
-  font-size: 9px;
-  color: #aebcd0;
-  line-height: 1;
-}
-
+/* ── Inputs (shared) ──────────────────────────────────────────────────── */
 .preset-input {
-  width: 74px;
-  box-sizing: border-box;
+  background-color: #3a3a3a;
+  color: #e0e0e0;
   border: 1px solid #555;
-  background-color: #1f1f1f;
-  color: #f0f0f0;
-  padding: 3px 4px;
-  border-radius: 2px;
-  font-size: 10px;
+  border-radius: 3px;
+  padding: 4px 6px;
+  font-size: 11px;
+  outline: none;
+  min-width: 0;
 }
 
 .preset-input:focus {
-  outline: 1px solid #5679aa;
-  border-color: #5679aa;
-}
-
-/* ── Brand presets ────────────────────────────────────────────────────── */
-
-.brand-text-input {
-  width: 120px;
-}
-
-.brand-text-field.hidden {
-  display: none;
-}
-
-/* ── Input ────────────────────────────────────────────────────────────── */
-
-.chat-input-container {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.chat-input {
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid #555;
-  background-color: #1f1f1f;
-  color: #f0f0f0;
-  padding: 6px;
-  resize: vertical;
-  min-height: 40px;
-  max-height: 120px;
-  border-radius: 3px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 11px;
-}
-
-.chat-input:focus {
-  outline: 1px solid #5679aa;
-  border-color: #5679aa;
-}
-
-.chat-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 4px;
+  border-color: #6699ff;
 }
 
 /* ── Buttons ──────────────────────────────────────────────────────────── */
-
 .btn {
+  background-color: #444;
+  color: #e0e0e0;
   border: 1px solid #555;
-  background-color: #3a3a3a;
-  color: #f0f0f0;
-  padding: 3px 8px;
+  border-radius: 3px;
+  padding: 5px 10px;
   font-size: 11px;
   cursor: pointer;
-  box-sizing: border-box;
-  border-radius: 2px;
+  transition: background-color 0.15s;
 }
 
 .btn:hover {
-  background-color: #4a4a4a;
+  background-color: #525252;
 }
 
 .btn:disabled {
@@ -525,298 +61,141 @@ body {
 }
 
 .btn-primary {
-  background-color: #3c5a80;
-  border-color: #5679aa;
+  background-color: #4a90e2;
+  border-color: #4a90e2;
 }
 
 .btn-primary:hover {
-  background-color: #446894;
+  background-color: #5ba0f2;
 }
 
 .btn-secondary {
-  background-color: #444;
-}
-
-.btn-warning {
-  background-color: #5a4a20;
-  border-color: #7a6a30;
-}
-
-.btn-warning:hover {
-  background-color: #6a5a28;
-}
-
-.btn-danger {
-  background-color: #7a3030;
-  border-color: #a34444;
-}
-
-.btn-danger:hover {
-  background-color: #8a3838;
-}
-
-/* ── Panel footer (shared actions) ───────────────────────────────────── */
-
-.panel-footer {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 6px;
-  border-top: 1px solid #444;
-  background-color: #2b2b2b;
-  flex-shrink: 0;
-  flex-wrap: wrap;
-}
-
-/* ── Thinking/loading indicator ───────────────────────────────────────── */
-
-.agent-thinking {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 8px;
-  color: #888;
-  font-size: 10px;
-}
-
-.thinking-dots {
-  display: inline-flex;
-  gap: 3px;
-}
-
-.thinking-dots span {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: #666;
-  animation: pulse 1.2s infinite;
-}
-
-.thinking-dots span:nth-child(2) { animation-delay: 0.2s; }
-.thinking-dots span:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+  background-color: #555;
 }
 
 /* ── Scrollbar styling ────────────────────────────────────────────────── */
-
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e1e1e;
+  background: #2b2b2b;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #555;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #666;
 }
 
-/* ── Quick actions ───────────────────────────────────────────────────── */
-
-.quick-actions {
-  display: flex;
-  gap: 4px;
-  padding: 3px 0;
-  flex-wrap: wrap;
-}
-
-.quick-action-btn {
-  background: #3a3a3a;
-  border: 1px solid #555;
-  color: #ccc;
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 10px;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.quick-action-btn:hover {
-  background: #4a4a4a;
-  color: #fff;
-  border-color: #777;
-}
-
-/* ── Streaming preview ───────────────────────────────────────────────── */
-
-.stream-preview {
-  margin-top: 4px;
-  font-size: 10px;
-  color: #a0c0a0;
-  white-space: pre-wrap;
-  word-break: break-word;
-  max-height: 80px;
-  overflow-y: auto;
-  line-height: 1.3;
-}
-
-/* ── Preview images ──────────────────────────────────────────────────── */
-
-.md-preview-img {
-  max-width: 100%;
-  max-height: 300px;
-  border-radius: 4px;
-  margin: 6px 0;
-  border: 1px solid #555;
-}
-
-/* ── Compact tool log (Presets & Logs tab) ────────────────────────────── */
-
+/* ── Compact log ──────────────────────────────────────────────────────── */
 .log-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  margin-top: 8px;
+  margin-top: 10px;
+  padding: 8px 10px;
+  background-color: #1f1f1f;
+  border-top: 1px solid #3a3a3a;
 }
 
 .tool-log {
-  flex: 1;
-  border: 1px solid #444;
-  background-color: #1e1e1e;
-  padding: 4px 6px;
+  max-height: 160px;
   overflow-y: auto;
   font-family: Menlo, Monaco, Consolas, monospace;
   font-size: 10px;
-  line-height: 1.4;
+  color: #cccccc;
 }
 
 .tool-log-entry {
   padding: 2px 0;
-  border-bottom: 1px solid #2a2a2a;
+  border-bottom: 1px dotted #2f2f2f;
   display: flex;
-  align-items: baseline;
-  gap: 6px;
+  gap: 8px;
 }
 
 .tool-log-entry:last-child {
-  border-bottom: none;
+  border-bottom: 0;
 }
 
 .tool-log-time {
-  color: #666;
-  font-size: 9px;
-  flex-shrink: 0;
+  color: #888;
+  flex: 0 0 auto;
 }
 
 .tool-log-name {
-  color: #9ad0ff;
-  flex-shrink: 0;
-}
-
-.tool-log-status {
-  font-size: 9px;
-  padding: 0 3px;
-  border-radius: 2px;
-}
-
-.tool-log-status.ok {
-  color: #a5f7b3;
-}
-
-.tool-log-status.error {
-  color: #ffb3b3;
-}
-
-.tool-log-status.running {
-  color: #f0f0a0;
+  color: #b8b8b8;
+  flex: 0 0 auto;
 }
 
 .tool-log-msg {
-  color: #888;
-  font-size: 9px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  flex: 1;
+  color: #cccccc;
+  flex: 1 1 auto;
+  word-break: break-word;
 }
 
-/* ── Export tab ──────────────────────────────────────────────────────── */
+.tool-log-ok .tool-log-name { color: #79c479; }
+.tool-log-warn .tool-log-name { color: #e0c374; }
+.tool-log-error .tool-log-name { color: #ff7676; }
 
-/* Make the Export tab panel scrollable: .tab-panel has overflow:hidden + flex:1,
-   so we let .export-panel consume that height and scroll internally. This keeps
-   the Export button reachable regardless of how long the support table grows. */
-.tab-panel[data-tab="export"] {
-  overflow: hidden;  /* tab-panel keeps outer clipping */
-}
-
+/* ── Export panel ─────────────────────────────────────────────────────── */
 .export-panel {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  padding: 10px;
   gap: 8px;
-  flex: 1;
-  min-height: 0;
   overflow-y: auto;
-  overflow-x: auto;
-  padding-right: 4px;  /* room for scrollbar */
+  min-height: 0;
 }
 
 /* Support table: allow horizontal scroll when panel narrower than content */
 .export-support {
   overflow-x: auto;
 }
+
 .export-support-table {
-  min-width: 560px;  /* ensures readable cells; wider than narrowest CEP panel */
+  min-width: 540px;
 }
 
-/* Keep the action row (Export button + status) pinned to the bottom so it's
-   always visible even while the support table scrolls above it. */
+/* Keep the action row (Export button + status) pinned to the bottom */
 .export-row-actions {
-  position: sticky;
-  bottom: 0;
-  background: #2b2b2b;
-  padding-top: 6px;
-  margin-top: auto;  /* pushes to bottom of flex column when content is short */
-  z-index: 2;
+  margin-top: auto;
 }
 
 #export-status {
-  position: sticky;
-  bottom: 34px;  /* sits above the sticky action row */
-  z-index: 1;
+  flex: 0 0 auto;
 }
 
 .export-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .export-row-actions {
-  justify-content: flex-start;
-  margin-top: 4px;
+  justify-content: flex-end;
 }
 
 .export-field-label {
-  color: #bbb;
-  font-size: 10px;
-  min-width: 110px;
-  flex: 0 0 auto;
+  flex: 0 0 110px;
+  font-size: 11px;
+  color: #b8b8b8;
 }
 
 .export-input {
-  flex: 1 1 160px;
-  min-width: 140px;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .export-select {
-  flex: 1 1 200px;
-  min-width: 160px;
-  height: 22px;
+  flex: 1 1 auto;
 }
 
 .export-dir-input {
-  font-family: Menlo, Consolas, monospace;
-  font-size: 10px;
+  flex: 1 1 auto;
 }
 
 .export-browse {
@@ -824,50 +203,14 @@ body {
 }
 
 .export-run {
-  font-weight: 600;
-  padding-left: 14px;
-  padding-right: 14px;
-}
-
-.export-hints {
-  background: #242424;
-  border: 1px solid #3a3a3a;
-  border-left: 3px solid #f0a855;
-  padding: 6px 10px;
-  border-radius: 3px;
-  color: #c8c8c8;
-  font-size: 10px;
-  line-height: 1.5;
-}
-
-.export-hints-title {
-  color: #f0a855;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.export-hints-list {
-  margin: 0;
-  padding-left: 16px;
-}
-
-.export-hints-list li {
-  margin-bottom: 2px;
-}
-
-.export-hints-list code {
-  background: #1b1b1b;
-  padding: 0 3px;
-  border-radius: 2px;
-  color: #e7c97d;
+  min-width: 100px;
 }
 
 .export-hints-sub {
+  font-size: 10px;
+  color: #999;
   margin-top: 6px;
-  padding-top: 6px;
-  border-top: 1px dashed #3a3a3a;
-  color: #aaa;
-  font-style: italic;
+  line-height: 1.4;
 }
 
 .export-hints-sub:empty {
@@ -875,50 +218,44 @@ body {
 }
 
 .export-status {
+  font-size: 11px;
+  color: #cccccc;
   padding: 6px 8px;
-  background: #1f1f1f;
-  border: 1px solid #333;
+  background-color: #1f1f1f;
   border-radius: 3px;
-  color: #bbb;
-  font-size: 10px;
-  font-family: Menlo, Consolas, monospace;
-  word-break: break-all;
+  border-left: 3px solid #555;
+  margin-top: 4px;
 }
 
 .export-status.ok {
-  color: #a5f7b3;
-  border-color: #2f5035;
-  background: #1b2a1f;
+  border-left-color: #79c479;
+  color: #cce0cc;
 }
 
 .export-status.error {
-  color: #ffb3b3;
-  border-color: #5a2a2a;
-  background: #2a1b1b;
+  border-left-color: #ff7676;
+  color: #ffcccc;
 }
 
 .export-status.working {
-  color: #f0d98a;
-  border-color: #5a4a2a;
-  background: #2a241b;
+  border-left-color: #e0c374;
+  color: #f0e0a0;
 }
 
-
-
-/* ── Export tab: structured support table ──────────────────────────── */
-
+/* ── Export tab: structured support table ─────────────────────────────── */
 .export-support {
-  background: #1e1e1e;
-  border: 1px solid #3a3a3a;
+  margin: 4px 0;
+  padding: 6px 8px;
+  background-color: #1f1f1f;
   border-radius: 3px;
-  padding: 8px 10px;
-  color: #c8c8c8;
-  font-size: 10px;
+  border-left: 3px solid #4a90e2;
+  font-size: 11px;
+  color: #cccccc;
 }
 
 .export-support-title {
-  color: #f0a855;
   font-weight: 600;
+  color: #e0e0e0;
   margin-bottom: 6px;
 }
 
@@ -926,57 +263,55 @@ body {
   width: 100%;
   border-collapse: collapse;
   font-size: 10px;
-  line-height: 1.35;
 }
 
 .export-support-table th {
   text-align: left;
-  color: #aaa;
-  font-weight: 600;
-  padding: 4px 6px;
+  padding: 3px 6px;
   border-bottom: 1px solid #3a3a3a;
+  color: #b8b8b8;
+  font-weight: 600;
 }
 
 .export-support-table td {
   padding: 3px 6px;
+  border-bottom: 1px dotted #2f2f2f;
   vertical-align: top;
-  border-bottom: 1px solid #262626;
 }
 
 .export-support-table td:first-child {
+  width: 30%;
   color: #e0e0e0;
-  white-space: nowrap;
 }
 
 .export-support-table .col-status {
-  width: 90px;
-  white-space: nowrap;
+  width: 18%;
 }
 
-.export-support-table .row-ok td.col-status,
 .export-support-table tr.row-ok td:nth-child(2) {
-  color: #a5f7b3;
+  color: #79c479;
 }
 
 .export-support-table .row-partial td:nth-child(2) {
-  color: #f0d98a;
+  color: #e0c374;
 }
 
 .export-support-table .row-no td:nth-child(2) {
-  color: #ffb3b3;
+  color: #ff7676;
 }
 
 .export-support-table code {
-  background: #0e0e0e;
-  color: #e7c97d;
-  padding: 0 3px;
+  background-color: #2a2a2a;
+  padding: 1px 4px;
   border-radius: 2px;
+  font-family: Menlo, Monaco, Consolas, monospace;
+  font-size: 9px;
+  color: #c0d8ff;
 }
 
 .export-support-meta {
-  margin-top: 8px;
-  padding-top: 6px;
-  border-top: 1px dashed #3a3a3a;
-  color: #888;
-  font-style: italic;
+  margin-top: 6px;
+  font-size: 10px;
+  color: #999;
+  line-height: 1.4;
 }

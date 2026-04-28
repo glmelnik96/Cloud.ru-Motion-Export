@@ -1,6 +1,6 @@
 /**
  * HtmlExporter — client-side generator that converts comp data extracted by
- * extensionsLlmChat_extractCompForHtml() into runnable HTML artifacts.
+ * motionExport_extractCompForHtml() into runnable HTML artifacts.
  *
  * Public API (attached to window):
  *   HtmlExporter.generate(format, compData, opts) →
@@ -2042,10 +2042,8 @@
   }
 
   // Ease-and-Wizz palette: 25 Penner easings as CSS cubic-bezier tuples.
-  // Usage: author brand-preset animations can reference a named ease via
-  //   HtmlExporter.easings['outBounce'] → 'cubic-bezier(0.34, 1.56, 0.64, 1)'.
-  // Names are the canonical Penner/Robert-Penner set shared by
-  // Ease-and-Wizz and project-Cue.
+  // Usage: HtmlExporter.easings['outBounce'] → 'cubic-bezier(0.34, 1.56, 0.64, 1)'.
+  // Canonical Penner/Robert-Penner set.
   var EASINGS = {
     linear:       'cubic-bezier(0.000, 0.000, 1.000, 1.000)',
     inSine:       'cubic-bezier(0.470, 0.000, 0.745, 0.715)',

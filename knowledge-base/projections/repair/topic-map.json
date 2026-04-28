@@ -1,9 +1,0 @@
-{
-  "description": "Repair projection: fix recipes, issue-targeted snippets, patching patterns",
-  "topicIds": [
-    "repair_fix_recipes",
-    "wiggle_valueAtTime_posterizeTime",
-    "property_targeting_constraints",
-    "common_patterns"
-  ]
-}
