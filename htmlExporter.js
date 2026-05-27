@@ -1,18 +1,27 @@
 /**
  * HtmlExporter — client-side generator that converts comp data extracted by
- * motionExport_extractCompForHtml() into runnable HTML artifacts.
+ * motionExport_extractCompForHtml() into runnable web artifacts.
  *
  * Public API (attached to window):
  *   HtmlExporter.generate(format, compData, opts) →
- *     { html: string, files: [{name, content, copyFrom?}], warnings: [string] }
+ *     { files: [{name, content, copyFrom?}], warnings: [string] }
+ *   HtmlExporter.easings → { <name>: 'cubic-bezier(...)' }  // Penner palette
  *
- * Supported formats:
- *   - "css-svg"   : pure CSS @keyframes + inline SVG (zero JS deps, lightest, banner-safe)
- *   - "gsap-svg"  : GSAP timeline controlling inline SVG (via cdnjs reference)
- *   - "json-raw"  : raw comp-data JSON dump
+ * Supported formats (dispatched in `generate`):
+ *   - "css-svg"     : pure CSS @keyframes + inline SVG (zero JS deps, banner-safe)
+ *   - "gsap-svg"    : GSAP timeline controlling inline SVG (cdnjs <script src>)
+ *   - "lottie-json" : bodymovin v5.7 JSON (alias: "lottie")
+ *   - "json-raw"    : raw compData dump (diagnostic / diffing)
+ *
+ * Output `files[]` always includes the main artifact + a `<name>.diagnostic.json`
+ * sibling (structured layer/warning summary, used for reproducible diffs).
+ * Footage referenced by AV layers is added as `copyFrom` entries that
+ * `main.js → writeExportFiles` copies into `assets/` next to the artifact.
  *
  * All generators are idempotent: same compData + opts → same output.
  * Timestamps and random numbers are never emitted into generated code.
+ *
+ * For architecture, data flow, and extension points see AGENTS.md.
  */
 ;(function () {
   'use strict'
